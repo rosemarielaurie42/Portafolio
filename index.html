@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Portfolio | Cybersecurity</title>
+
+    <style>
+        /* CONFIGURACIÓN GENERAL */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #080d12;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        :root {
+            --green: #00e59b;
+            --dark: #080d12;
+            --card: #111a22;
+            --gray: #9ca3af;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVEGACIÓN */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            background: rgba(8, 13, 18, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #1c2932;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 14px;
+            color: var(--gray);
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        /* INICIO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 130px 12% 80px;
+            background:
+                radial-gradient(circle at 85% 40%,
+                rgba(0, 229, 155, 0.09), transparent 35%);
+        }
+
+        .tag {
+            color: var(--green);
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--gray);
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border: 1px solid var(--green);
+            border-radius: 5px;
+            color: var(--green);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--green);
+            color: var(--dark);
+        }
+
+        /* SECCIONES */
+
+        section:not(.hero) {
+            padding: 100px 12%;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--green);
+        }
+
+        .section-description {
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* SOBRE MÍ */
+
+        .about-content {
+            background: var(--card);
+            padding: 30px;
+            border-left: 3px solid var(--green);
+            border-radius: 6px;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        /* HABILIDADES */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
+        }
+
+        .skill {
+            background: var(--card);
+            border: 1px solid #26343e;
+            padding: 22px;
+            text-align: center;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            border-color: var(--green);
+            transform: translateY(-5px);
+        }
+
+        .skill h3 {
+            color: var(--green);
+            font-size: 17px;
+        }
+
+        /* PROYECTOS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+        }
+
+        .project {
+            background: var(--card);
+            border: 1px solid #26343e;
+            padding: 25px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .project .number {
+            color: var(--green);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .project h3 {
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .project a {
+            color: var(--green);
+            font-size: 14px;
+        }
+
+        /* FORMACIÓN */
+
+        .education {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--green);
+        }
+
+        .education h3 {
+            margin-bottom: 5px;
+        }
+
+        .education p {
+            color: var(--gray);
+        }
+
+        /* CONTACTO */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--green);
+            border: 1px solid var(--green);
+            padding: 10px 22px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: var(--green);
+            color: var(--dark);
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--gray);
+            border-top: 1px solid #1c2932;
+            font-size: 13px;
+        }
+
+        /* ADAPTACIÓN A MÓVILES */
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            nav {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 150px 8% 80px;
+            }
+
+            section:not(.hero) {
+                padding: 75px 8%;
+            }
+
+            .hero h2 {
+                font-size: 19px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MENÚ -->
+
+    <header>
+        <div class="logo">CYBER<span>PORTFOLIO</span></div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#formacion">Formación</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- INICIO -->
+
+    <section class="hero" id="inicio">
+
+        <div class="tag">CYBERSECURITY PORTFOLIO</div>
+
+        <h1>Hola, soy <span>Rosemarie Laurie</span></h1>
+
+        <h2>Estudiante de Máster en Ciberseguridad</h2>
+
+        <p>
+            Graduada en Investigación Criminal y Seguridad,
+            interesada en la ciberseguridad, la investigación
+            digital y la protección de infraestructuras tecnológicas.
+        </p>
+
+        <a href="#proyectos" class="btn">
+            Explorar proyectos →
+        </a>
+
+    </section>
+
+    <!-- SOBRE MÍ -->
+
+    <section id="sobre-mi">
+
+        <h2 class="section-title">
+            Sobre <span>mí</span>
+        </h2>
+
+        <p class="section-description">
+            Conoce un poco más sobre mi perfil profesional.
+        </p>
+
+        <div class="about-content">
+
+            <p>
+                Soy graduada en Investigación Criminal y Seguridad
+                y actualmente curso un Máster en Ciberseguridad.
+            </p>
+
+            <p>
+                Mi formación me ha permitido desarrollar interés
+                por la investigación, el análisis de evidencias
+                y la resolución de problemas.
+            </p>
+
+            <p>
+                Actualmente estoy ampliando mis conocimientos
+                técnicos en seguridad de redes, informática forense,
+                monitorización y análisis de vulnerabilidades.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- HABILIDADES -->
+
+    <section id="habilidades">
+
+        <h2 class="section-title">
+            Mis <span>habilidades</span>
+        </h2>
+
+        <p class="section-description">
+            Herramientas y tecnologías con las que he trabajado
+            durante mi formación y experiencia práctica.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill"><h3>Linux</h3></div>
+            <div class="skill"><h3>Windows</h3></div>
+            <div class="skill"><h3>Wazuh</h3></div>
+            <div class="skill"><h3>Nmap</h3></div>
+            <div class="skill"><h3>Proxmox</h3></div>
+            <div class="skill"><h3>Active Directory</h3></div>
+            <div class="skill"><h3>FortiGate</h3></div>
+            <div class="skill"><h3>Wireshark</h3></div>
+
+        </div>
+
+    </section>
+
+    <!-- PROYECTOS -->
+
+    <section id="proyectos">
+
+        <h2 class="section-title">
+            Mis <span>proyectos</span>
+        </h2>
+
+        <p class="section-description">
+            Laboratorios, investigaciones y ejercicios prácticos
+            relacionados con la ciberseguridad.
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="project">
+
+                <div class="number">01 / BLUE TEAM</div>
+
+                <h3>Laboratorio de monitorización</h3>
+
+                <p>
+                    Implementación de herramientas de monitorización
+                    y análisis de eventos de seguridad.
+                </p>
+
+                <a href="#">Próximamente →</a>
+
+            </div>
+
+            <div class="project">
+
+                <div class="number">02 / DIGITAL FORENSICS</div>
+
+                <h3>Investigación forense</h3>
+
+                <p>
+                    Análisis de evidencias digitales y registros
+                    para identificar actividades sospechosas.
+                </p>
+
+                <a href="#">Próximamente →</a>
+
+            </div>
+
+            <div class="project">
+
+                <div class="number">03 / NETWORK SECURITY</div>
+
+                <h3>Arquitectura de redes</h3>
+
+                <p>
+                    Diseño de infraestructura de red,
+                    segmentación y configuración de seguridad.
+                </p>
+
+                <a href="#">Próximamente →</a>
+
+            </div>
+
+            <div class="project">
+
+                <div class="number">04 / VULNERABILITY ASSESSMENT</div>
+
+                <h3>Análisis de vulnerabilidades</h3>
+
+                <p>
+                    Evaluación de vulnerabilidades, análisis
+                    de CVE y documentación de riesgos.
+                </p>
+
+                <a href="#">Próximamente →</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FORMACIÓN -->
+
+    <section id="formacion">
+
+        <h2 class="section-title">
+            Formación <span>académica</span>
+        </h2>
+
+        <div class="education">
+
+            <h3>Máster en Ciberseguridad</h3>
+            <p>Universidad Internacional de La Rioja (UNIR)</p>
+
+        </div>
+
+        <div class="education">
+
+            <h3>Investigación Criminal y Seguridad</h3>
+            <p>Formación universitaria</p>
+
+        </div>
+
+        <div class="education">
+
+            <h3>Formación complementaria</h3>
+            <p>CyberOps, CCNA y Ethical Hacking</p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACTO -->
+
+    <section id="contacto" class="contact">
+
+        <h2 class="section-title">
+            ¡Conectemos!
+        </h2>
+
+        <p>
+            Puedes encontrarme en mis perfiles profesionales.
+        </p>
+
+        <div class="contact-links">
+
+            <a href="https://github.com/" target="_blank">
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/" target="_blank">
+                LinkedIn
+            </a>
+
+            <a href="mailto:tu-correo@ejemplo.com">
+                Correo electrónico
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <p>
+            © 2026 | Cybersecurity Portfolio
+        </p>
+
+        <p>
+            Construido con HTML y CSS.
+        </p>
+
+    </footer>
+
+</body>
+</html>
